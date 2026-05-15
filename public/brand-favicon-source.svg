@@ -1,0 +1,25 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="frame" x1="10" y1="10" x2="54" y2="54" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F4F7FB" stop-opacity="0.84" />
+      <stop offset="0.55" stop-color="#8EA8C2" stop-opacity="0.44" />
+      <stop offset="1" stop-color="#60758C" stop-opacity="0.74" />
+    </linearGradient>
+    <linearGradient id="signal" x1="22" y1="46" x2="46" y2="20" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#88A9C6" />
+      <stop offset="1" stop-color="#F7FAFE" />
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(42 22) rotate(90) scale(10)">
+      <stop stop-color="#A2C3DE" stop-opacity="0.95" />
+      <stop offset="1" stop-color="#A2C3DE" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="64" height="64" rx="18" fill="#0D0F14" />
+  <rect x="7" y="7" width="50" height="50" rx="16" fill="#131821" stroke="url(#frame)" />
+  <circle cx="32" cy="34" r="11" stroke="#E3EAF2" stroke-opacity="0.78" stroke-width="3.4" />
+  <path d="M20 44L31 34L42 22" stroke="url(#signal)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M32 23V16" stroke="#C6D5E4" stroke-opacity="0.85" stroke-width="3.2" stroke-linecap="round" />
+  <circle cx="42" cy="22" r="9" fill="url(#glow)" />
+  <circle cx="42" cy="22" r="4" fill="#B9D1E5" />
+  <circle cx="31.5" cy="34" r="2.4" fill="#D7E2EC" />
+</svg>

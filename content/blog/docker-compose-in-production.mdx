@@ -1,0 +1,101 @@
+---
+title: "Docker Compose in Production"
+description: "Common patterns and pitfalls when taking Docker Compose from local development to production."
+date: "2026-05-05"
+category: "Technical Notes"
+---
+
+Docker Compose was designed for development. But with the right patterns, it works very well for production — especially on single-server deployments.
+
+## The Pitfalls
+
+### Bind Mounts in Production
+
+In development you bind mount your source code. In production you want your code baked into the image.
+
+Bad:
+```yaml
+volumes:
+  - ./src:/app/src  # development only
+```
+
+Good:
+```dockerfile
+COPY . /app
+```
+
+### No Resource Limits
+
+By default containers can consume unlimited CPU and memory. On a shared VPS this can bring down other services.
+
+```yaml
+services:
+  app:
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+```
+
+### Missing Log Rotation
+
+Without log rotation, containers will eventually fill your disk.
+
+```yaml
+services:
+  app:
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+```
+
+## The Patterns That Work
+
+### Override Files
+
+Use `docker-compose.override.yml` for local development differences. The base `docker-compose.yml` defines production configuration.
+
+```bash
+# Production
+docker compose up -d
+
+# Development (automatically merges override)
+docker compose up -d
+```
+
+### Health-dependent Startup
+
+```yaml
+services:
+  app:
+    depends_on:
+      postgres:
+        condition: service_healthy
+```
+
+This prevents your app from starting before the database is ready — a common race condition.
+
+### Named Volumes for Persistence
+
+Use named volumes, not bind mounts, for database data:
+
+```yaml
+volumes:
+  postgres_data:
+
+services:
+  postgres:
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+```
+
+Named volumes survive container removal and are easier to back up.
+
+## Zero-Downtime Deploys
+
+This is the one area where Docker Compose falls short of Kubernetes. For most small projects, a brief restart is acceptable. For critical services, run two containers behind the load balancer and roll them over.
+
+The Docker Compose Production Stack I'm building handles this automatically.

@@ -1,0 +1,263 @@
+{
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "blog": "Blog",
+    "about": "About",
+    "contact": "Contact",
+    "getInTouch": "Get in touch"
+  },
+  "footer": {
+    "tagline": "Production infrastructure for founders.",
+    "rights": "All rights reserved.",
+    "builtInPublic": "Built in public. Shipped with intention."
+  },
+  "hero": {
+    "badge": "Building in public",
+    "headline": "Stop rebuilding your infra from scratch.",
+    "subheadline": "A production-ready Docker Compose stack: Traefik SSL, monitoring, backups, and alerting — configured and running on your VPS in under 30 minutes.",
+    "cta_primary": "View Docker Stack",
+    "cta_secondary": "GitHub"
+  },
+  "featured": {
+    "eyebrow": "Flagship Product",
+    "name": "Docker Compose Production Stack",
+    "tagline": "Everything you need to run a production workload on a single VPS.",
+    "outcomes": [
+      "SSL terminated automatically via Traefik + Let's Encrypt — no manual cert renewals",
+      "Prometheus + Grafana monitoring up in minutes, not days",
+      "Automated daily database backups with retention policies",
+      "Telegram alerts for deployments, container restarts, and downtime",
+      "Health checks and auto-restart policies on every service"
+    ],
+    "architecture_title": "System architecture",
+    "included_title": "What you get",
+    "included": [
+      "docker-compose.yml (production-hardened)",
+      "Traefik reverse proxy + Let's Encrypt config",
+      "Prometheus + Grafana monitoring stack",
+      "Alertmanager + Telegram notification setup",
+      "Automated backup scripts (PostgreSQL, volumes)",
+      "Environment variable management templates",
+      "install.sh one-command bootstrap"
+    ],
+    "cta": "View full details",
+    "status": "Active development"
+  },
+  "problem": {
+    "eyebrow": "Why this exists",
+    "headline": "Production infra is painful. It doesn't have to be.",
+    "subheadline": "Every time you ship something new, you solve the same problems: SSL setup, reverse proxy config, container health checks, log aggregation, backup jobs. None of this is the actual product.",
+    "points": [
+      {
+        "title": "docker-compose is production-capable — but nobody ships a hardened setup",
+        "body": "Most tutorials stop at 'it works locally'. Getting SSL, health checks, restart policies, and log rotation right takes days of trial and error on a live server."
+      },
+      {
+        "title": "Monitoring is an afterthought until the server goes down at 2am",
+        "body": "Standing up Prometheus, connecting Grafana, writing alert rules, wiring Alertmanager to Telegram — it's 3–4 days of work that has nothing to do with your product."
+      },
+      {
+        "title": "Backups are always 'I'll do it later'",
+        "body": "PostgreSQL dumps, volume snapshots, offsite storage, retention policies. Easy to skip, catastrophic to miss."
+      },
+      {
+        "title": "Small teams don't need Kubernetes — they need a production-ready VPS",
+        "body": "K8s is overkill for a single-product startup. A well-structured docker-compose stack handles 99% of early production workloads with a fraction of the operational cost."
+      }
+    ]
+  },
+  "howItWorks": {
+    "eyebrow": "Setup",
+    "headline": "Production in 4 steps.",
+    "steps": [
+      {
+        "step": "01",
+        "title": "Provision a VPS",
+        "body": "Any Ubuntu 22.04 VPS — DigitalOcean, Hetzner, Vultr. 2 vCPU / 4GB RAM minimum."
+      },
+      {
+        "step": "02",
+        "title": "Clone the repo",
+        "body": "git clone and copy .env.example. Fill in your domain, credentials, and notification tokens."
+      },
+      {
+        "step": "03",
+        "title": "Run install.sh",
+        "body": "Bootstrap script installs Docker, configures firewall rules, sets up systemd service, and pulls images."
+      },
+      {
+        "step": "04",
+        "title": "Production ready",
+        "body": "SSL is live, monitoring is collecting metrics, backups are scheduled, Telegram alerts are firing."
+      }
+    ]
+  },
+  "ecosystem": {
+    "eyebrow": "Product Ecosystem",
+    "headline": "More tools on the roadmap.",
+    "products": [
+      {
+        "name": "Telegram DevOps Bot Kit",
+        "outcome": "Manage containers and get deployment alerts without SSH.",
+        "status": "Planned"
+      },
+      {
+        "name": "SaaS Starter Kit",
+        "outcome": "Auth, billing, teams — skip the boilerplate.",
+        "status": "Planned"
+      },
+      {
+        "name": "AI Agent Starter Kit",
+        "outcome": "Production foundation for building and shipping AI agents.",
+        "status": "Planned"
+      },
+      {
+        "name": "Production Monitoring Bundle",
+        "outcome": "Prometheus + Grafana + Alertmanager in under 10 minutes.",
+        "status": "Planned"
+      },
+      {
+        "name": "Founder Infra Bundle",
+        "outcome": "Everything you need to run production on a single VPS.",
+        "status": "Planned"
+      }
+    ]
+  },
+  "openSource": {
+    "eyebrow": "Open Core",
+    "headline": "Base systems are open-source. No lock-in.",
+    "body": "The core infrastructure configs are open-source and self-hostable. Pro versions add hardened configs, extended monitoring dashboards, and ongoing updates. You own everything you buy.",
+    "points": [
+      "Self-hostable — runs on any VPS",
+      "No vendor lock-in — standard Docker + Linux tooling",
+      "Full source code included",
+      "One-time purchase, lifetime use",
+      "OSS base, pro upgrades available"
+    ]
+  },
+  "blog": {
+    "eyebrow": "Build in public",
+    "headline": "Engineering notes.",
+    "description": "Build logs, technical notes, and founder lessons. Documenting how I build and ship infrastructure tools.",
+    "allPosts": "All posts",
+    "back": "Back to blog",
+    "metaTitle": "Blog",
+    "metaDescription": "Build logs, technical notes, and founder lessons.",
+    "categoryBuildLogs": "Build Logs",
+    "categoryTechnicalNotes": "Technical Notes",
+    "categoryFounderLessons": "Founder Lessons"
+  },
+  "waitlist": {
+    "headline": "Get early access to production-ready infra tools.",
+    "subheadline": "Join the list for early access, launch discounts, and build-in-public updates. No spam.",
+    "placeholder": "your@email.com",
+    "cta": "Get early access",
+    "loading": "Joining...",
+    "success": "You're on the list.",
+    "incentive": "Early access + launch discount",
+    "wait": "Wait {seconds}s",
+    "cooldown": "Resend available in {seconds}s",
+    "error": "Something went wrong. Please try again."
+  },
+  "products": {
+    "metaTitle": "Products",
+    "metaDescription": "Production-ready infrastructure tools and starter kits for founders and indie hackers.",
+    "eyebrow": "Products",
+    "headline": "Infrastructure tools for every layer.",
+    "subheadline": "A 3-stage ecosystem: start with templates, expand into SaaS ops tooling, then build the AI AgentOps platform.",
+    "stage1_label": "Stage 1",
+    "stage1_title": "Template Store",
+    "stage1_subtitle": "Production-ready templates and starter kits. Buy once, deploy anywhere.",
+    "stage2_label": "Stage 2",
+    "stage2_title": "SaaS Operations",
+    "stage2_subtitle": "Managed DevOps tooling for running production systems without a dedicated DevOps engineer.",
+    "stage3_label": "Stage 3",
+    "stage3_title": "AI AgentOps",
+    "stage3_subtitle": "Monitoring, debugging, and observability for AI agents in production.",
+    "stage3_coming": "Coming after Stage 2. Follow along for updates.",
+    "techStack": "Tech Stack",
+    "plannedFeatures": "Planned Features",
+    "moreFeatures": "+{count} more features",
+    "viewAll": "View all products →",
+    "viewDetails": "View details →",
+    "statusBuilding": "Building",
+    "statusPlanned": "Planned",
+    "statusBeta": "Beta",
+    "statusReleased": "Released"
+  },
+  "productDetail": {
+    "back": "← All products",
+    "metaFallbackTitle": "Product",
+    "buyNow": "Buy Now",
+    "github": "GitHub",
+    "joinWaitlist": "Join Waitlist",
+    "problem": "The problem",
+    "solution": "The solution",
+    "whatsIncluded": "What's included",
+    "howItWorks": "How it works",
+    "features": "Features",
+    "coreFeatures": "Core (free)",
+    "proFeatures": "Pro (paid)",
+    "comparison": "vs. alternatives",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "free": "Free",
+    "paid": "One-time",
+    "getAccess": "Get access",
+    "openSource": "Open source",
+    "comparisonFeature": "Feature",
+    "comparisonThisStack": "This stack",
+    "comingSoon": "Coming soon",
+    "ctaHeadline": "Ready to deploy?",
+    "ctaBody": "Core is free and open-source. Clone the repo, configure your .env, run install.sh.",
+    "contactCta": "Get in touch",
+    "statusBuilding": "Building",
+    "statusPlanned": "Planned",
+    "statusBeta": "Beta",
+    "statusReleased": "Released"
+  },
+  "aboutPage": {
+    "eyebrow": "About",
+    "headline": "I build infrastructure tooling, automation systems, and startup products.",
+    "paragraphs": [
+      "I'm a technical founder focused on the infrastructure layer of software products — the pieces that make systems reliable, observable, and easy to operate.",
+      "Most of what I build starts as internal tooling for my own products. When something is genuinely useful and solves a problem I see other founders hitting repeatedly, I productize it.",
+      "The goal is to give small teams production-grade infrastructure without the overhead of a dedicated DevOps function."
+    ],
+    "techStack": "Tech stack",
+    "techBackend": "Backend",
+    "techInfrastructure": "Infrastructure",
+    "techFrontend": "Frontend",
+    "techAi": "AI",
+    "contactHeading": "Get in touch",
+    "contactBody": "If you're using any of these tools, have a feature request, or just want to talk infrastructure, feel free to reach out.",
+    "contactCta": "Contact me →",
+    "metaTitle": "About",
+    "metaDescription": "I build infrastructure tooling, automation systems, and startup products."
+  },
+  "contactPage": {
+    "eyebrow": "Contact",
+    "headline": "Get in touch. I read everything.",
+    "body": "Have a feature request, a question, or just want to talk production infrastructure — reach out.",
+    "directContact": "Direct contact",
+    "githubLabel": "GitHub",
+    "emailLabel": "Email",
+    "metaTitle": "Contact",
+    "metaDescription": "Get in touch. I read everything."
+  },
+  "contactForm": {
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "namePlaceholder": "Your name",
+    "emailPlaceholder": "your@email.com",
+    "messagePlaceholder": "What's on your mind?",
+    "send": "Send message",
+    "sending": "Sending...",
+    "wait": "Wait {seconds}s",
+    "success": "Message sent.",
+    "error": "Something went wrong. Please try again.",
+    "cooldown": "Resend available in {seconds}s"
+  }
+}

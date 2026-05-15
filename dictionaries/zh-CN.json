@@ -1,0 +1,263 @@
+{
+  "nav": {
+    "home": "首页",
+    "products": "产品",
+    "blog": "博客",
+    "about": "关于",
+    "contact": "联系",
+    "getInTouch": "联系我"
+  },
+  "footer": {
+    "tagline": "为创始人打造的生产级基础设施。",
+    "rights": "保留所有权利。",
+    "builtInPublic": "公开构建，用心交付。"
+  },
+  "hero": {
+    "badge": "公开构建中",
+    "headline": "停止从头搭建基础设施。",
+    "subheadline": "生产就绪的 Docker Compose 套件：Traefik SSL、监控、备份和告警——在 30 分钟内在你的 VPS 上配置并运行。",
+    "cta_primary": "查看 Docker 套件",
+    "cta_secondary": "GitHub"
+  },
+  "featured": {
+    "eyebrow": "核心产品",
+    "name": "Docker Compose 生产环境套件",
+    "tagline": "在单台 VPS 上运行生产工作负载所需的一切。",
+    "outcomes": [
+      "通过 Traefik + Let's Encrypt 自动续签 SSL 证书",
+      "几分钟内启动 Prometheus + Grafana 监控，而非数天",
+      "自动化每日数据库备份并支持保留策略",
+      "部署、容器重启和宕机时触发 Telegram 告警",
+      "每个服务都配置了健康检查和自动重启策略"
+    ],
+    "architecture_title": "系统架构",
+    "included_title": "包含内容",
+    "included": [
+      "docker-compose.yml（生产加固版）",
+      "Traefik 反向代理 + Let's Encrypt 配置",
+      "Prometheus + Grafana 监控栈",
+      "Alertmanager + Telegram 通知配置",
+      "自动化备份脚本（PostgreSQL、数据卷）",
+      "环境变量管理模板",
+      "install.sh 一键引导脚本"
+    ],
+    "cta": "查看完整详情",
+    "status": "开发中"
+  },
+  "problem": {
+    "eyebrow": "为什么存在",
+    "headline": "生产基础设施很痛苦。但不必如此。",
+    "subheadline": "每次发布新产品，你都要解决相同的问题：SSL 配置、反向代理设置、容器健康检查、日志聚合、备份任务。这些都不是真正的产品。",
+    "points": [
+      {
+        "title": "docker-compose 具备生产能力——但很少有人发布加固的配置",
+        "body": "大多数教程在'本地运行'就停止了。在线上服务器上正确配置 SSL、健康检查、重启策略和日志轮转需要数天的试错。"
+      },
+      {
+        "title": "监控总是被忽略，直到凌晨 2 点服务器宕机",
+        "body": "搭建 Prometheus、连接 Grafana、编写告警规则、将 Alertmanager 接入 Telegram——这是 3-4 天与你的产品无关的工作。"
+      },
+      {
+        "title": "备份总是'以后再做'",
+        "body": "PostgreSQL 转储、数据卷快照、异地存储、保留策略。容易跳过，但一旦遗漏就是灾难。"
+      },
+      {
+        "title": "小团队不需要 Kubernetes——他们需要生产就绪的 VPS",
+        "body": "对于初创公司来说 K8s 是杀鸡用牛刀。一个结构良好的 docker-compose 栈以极低的运营成本处理 99% 的早期生产工作负载。"
+      }
+    ]
+  },
+  "howItWorks": {
+    "eyebrow": "快速上手",
+    "headline": "4 步进入生产环境。",
+    "steps": [
+      {
+        "step": "01",
+        "title": "准备一台 VPS",
+        "body": "任意 Ubuntu 22.04 VPS——DigitalOcean、Hetzner、Vultr 均可。最低 2 vCPU / 4GB RAM。"
+      },
+      {
+        "step": "02",
+        "title": "克隆仓库",
+        "body": "git clone 并复制 .env.example。填入你的域名、凭证和通知 token。"
+      },
+      {
+        "step": "03",
+        "title": "运行 install.sh",
+        "body": "引导脚本安装 Docker、配置防火墙规则、设置 systemd 服务并拉取镜像。"
+      },
+      {
+        "step": "04",
+        "title": "生产就绪",
+        "body": "SSL 已上线，监控正在采集指标，备份已计划，Telegram 告警已触发。"
+      }
+    ]
+  },
+  "ecosystem": {
+    "eyebrow": "产品生态",
+    "headline": "更多工具即将推出。",
+    "products": [
+      {
+        "name": "Telegram DevOps Bot Kit",
+        "outcome": "无需 SSH 即可管理容器并接收部署告警。",
+        "status": "计划中"
+      },
+      {
+        "name": "SaaS 启动套件",
+        "outcome": "认证、计费、团队管理——跳过重复造轮子。",
+        "status": "计划中"
+      },
+      {
+        "name": "AI Agent 启动套件",
+        "outcome": "构建和发布 AI Agent 的生产就绪基础。",
+        "status": "计划中"
+      },
+      {
+        "name": "生产监控套件",
+        "outcome": "10 分钟内启动 Prometheus + Grafana + Alertmanager。",
+        "status": "计划中"
+      },
+      {
+        "name": "创始人基础设施套件",
+        "outcome": "在单台 VPS 上运行生产系统所需的一切。",
+        "status": "计划中"
+      }
+    ]
+  },
+  "openSource": {
+    "eyebrow": "开源内核",
+    "headline": "基础系统开源，无供应商锁定。",
+    "body": "核心基础设施配置开源且可自托管。Pro 版本增加了加固配置、扩展监控仪表板和持续更新。你购买的一切都归你所有。",
+    "points": [
+      "可自托管——在任意 VPS 上运行",
+      "无供应商锁定——标准 Docker + Linux 工具链",
+      "包含完整源码",
+      "一次购买，终身使用",
+      "OSS 基础版，Pro 升级可选"
+    ]
+  },
+  "blog": {
+    "eyebrow": "公开构建",
+    "headline": "工程笔记。",
+    "description": "构建日志、技术笔记和创始人经验。记录我如何构建和发布基础设施工具。",
+    "allPosts": "全部文章",
+    "back": "返回博客",
+    "metaTitle": "博客",
+    "metaDescription": "构建日志、技术笔记和创始人经验。",
+    "categoryBuildLogs": "构建日志",
+    "categoryTechnicalNotes": "技术笔记",
+    "categoryFounderLessons": "创始人经验"
+  },
+  "waitlist": {
+    "headline": "抢先获取生产就绪的基础设施工具。",
+    "subheadline": "加入列表，获取早期访问权限、发布折扣和公开构建更新。不发垃圾邮件。",
+    "placeholder": "your@email.com",
+    "cta": "获取早期访问",
+    "loading": "加入中...",
+    "success": "你已加入列表。",
+    "incentive": "早期访问 + 发布折扣",
+    "wait": "等待 {seconds} 秒",
+    "cooldown": "{seconds} 秒后可再次发送",
+    "error": "发送失败，请稍后重试。"
+  },
+  "products": {
+    "metaTitle": "产品",
+    "metaDescription": "为创始人和独立开发者打造的生产就绪基础设施工具和启动套件。",
+    "eyebrow": "产品",
+    "headline": "覆盖每一层的基础设施工具。",
+    "subheadline": "三阶段生态：从模板起步，扩展到 SaaS 运营工具，最终构建 AI AgentOps 平台。",
+    "stage1_label": "阶段 1",
+    "stage1_title": "模板商店",
+    "stage1_subtitle": "生产就绪的模板和启动套件。一次购买，随处部署。",
+    "stage2_label": "阶段 2",
+    "stage2_title": "SaaS 运营",
+    "stage2_subtitle": "无需专职 DevOps 工程师即可运行生产系统的托管 DevOps 工具。",
+    "stage3_label": "阶段 3",
+    "stage3_title": "AI AgentOps",
+    "stage3_subtitle": "生产环境中 AI Agent 的监控、调试和可观测性。",
+    "stage3_coming": "阶段 2 完成后推出。敬请关注。",
+    "techStack": "技术栈",
+    "plannedFeatures": "计划功能",
+    "moreFeatures": "+{count} 个更多功能",
+    "viewAll": "查看全部产品 →",
+    "viewDetails": "查看详情 →",
+    "statusBuilding": "开发中",
+    "statusPlanned": "计划中",
+    "statusBeta": "测试中",
+    "statusReleased": "已发布"
+  },
+  "productDetail": {
+    "back": "← 所有产品",
+    "metaFallbackTitle": "产品",
+    "buyNow": "立即购买",
+    "github": "GitHub",
+    "joinWaitlist": "加入等待列表",
+    "problem": "问题",
+    "solution": "解决方案",
+    "whatsIncluded": "包含内容",
+    "howItWorks": "使用方法",
+    "features": "功能特性",
+    "coreFeatures": "核心功能（免费）",
+    "proFeatures": "Pro 功能（付费）",
+    "comparison": "与竞品对比",
+    "pricing": "定价",
+    "faq": "常见问题",
+    "free": "免费",
+    "paid": "一次性付费",
+    "getAccess": "获取访问权",
+    "openSource": "开源",
+    "comparisonFeature": "功能",
+    "comparisonThisStack": "本套件",
+    "comingSoon": "即将推出",
+    "ctaHeadline": "准备好部署了吗？",
+    "ctaBody": "核心版免费开源。克隆仓库，配置你的 .env，运行 install.sh。",
+    "contactCta": "联系我们",
+    "statusBuilding": "开发中",
+    "statusPlanned": "计划中",
+    "statusBeta": "测试中",
+    "statusReleased": "已发布"
+  },
+  "aboutPage": {
+    "eyebrow": "关于",
+    "headline": "我构建基础设施工具、自动化系统和创业产品。",
+    "paragraphs": [
+      "我是一名专注于软件产品基础设施层的技术创始人——这些部分让系统可靠、可观测且易于运维。",
+      "我构建的大部分内容最初都是为自己的产品开发的内部工具。当某些东西真正有用，并且解决了我看到其他创始人反复遇到的问题时，我就将其产品化。",
+      "目标是让小团队拥有生产级基础设施，而不需要专职的 DevOps 职能。"
+    ],
+    "techStack": "技术栈",
+    "techBackend": "后端",
+    "techInfrastructure": "基础设施",
+    "techFrontend": "前端",
+    "techAi": "AI",
+    "contactHeading": "联系",
+    "contactBody": "如果你在使用这些工具，有功能建议，或者只是想聊聊基础设施，欢迎联系。",
+    "contactCta": "联系我 →",
+    "metaTitle": "关于",
+    "metaDescription": "我构建基础设施工具、自动化系统和创业产品。"
+  },
+  "contactPage": {
+    "eyebrow": "联系",
+    "headline": "联系我。我会阅读每一封邮件。",
+    "body": "有功能请求、问题，或者只是想聊聊生产基础设施——都可以联系我。",
+    "directContact": "直接联系",
+    "githubLabel": "GitHub",
+    "emailLabel": "邮箱",
+    "metaTitle": "联系",
+    "metaDescription": "联系我。我会阅读每一封邮件。"
+  },
+  "contactForm": {
+    "name": "姓名",
+    "email": "邮箱",
+    "message": "消息",
+    "namePlaceholder": "你的名字",
+    "emailPlaceholder": "your@email.com",
+    "messagePlaceholder": "你想聊些什么？",
+    "send": "发送消息",
+    "sending": "发送中...",
+    "wait": "等待 {seconds} 秒",
+    "success": "消息已发送。",
+    "error": "发送失败，请稍后重试。",
+    "cooldown": "{seconds} 秒后可再次发送"
+  }
+}

@@ -1,0 +1,58 @@
+---
+title: "Lessons from Shipping Side Projects"
+description: "Mistakes I made deploying the first few products — and what I do differently now."
+date: "2026-04-28"
+category: "Founder Lessons"
+---
+
+Every project I've shipped has taught me something I couldn't have learned from a blog post. Here are the ones that actually cost me time.
+
+## Mistake 1: Skipping Monitoring Until Something Broke
+
+I deployed my first product with no metrics, no alerts, nothing. I found out it was down when a user emailed me. By then it had been down for six hours.
+
+Monitoring is not optional. Set it up before you ship. At minimum:
+
+- An uptime check (even a free one like UptimeRobot)
+- Error logging (Sentry free tier)
+- A Telegram bot that pings you on deploy
+
+## Mistake 2: Using the Root User
+
+I ran everything as root on my first few VPS deployments. When something went wrong with a script, the blast radius was the entire machine.
+
+Use a dedicated deploy user. Limit its permissions to what the application actually needs.
+
+```bash
+adduser deploy
+usermod -aG docker deploy
+```
+
+## Mistake 3: No Backup Strategy
+
+I lost data once. It's a uniquely bad feeling. The irony is that proper backups take less than a day to set up and cost almost nothing.
+
+Automate a nightly dump to object storage:
+
+```bash
+pg_dump $DATABASE_URL | gzip | \
+  s3cmd put - s3://my-backups/$(date +%Y-%m-%d).sql.gz
+```
+
+Test your restore process before you need it.
+
+## Mistake 4: Rebuilding Infrastructure from Scratch Every Time
+
+The fourth project I shipped, I found myself doing the same Traefik setup, the same Postgres config, the same monitoring stack — again. All manual, all from memory.
+
+That's what pushed me to start building reusable infrastructure templates. The goal is to go from zero to production in under an hour.
+
+## What I Do Now
+
+1. Provision VPS → apply base configuration (Ansible or shell script)
+2. Clone infra template → fill in `.env`
+3. `docker compose up -d`
+4. Verify health checks pass
+5. Ship
+
+The infrastructure problem is solved. Now I only think about the product.

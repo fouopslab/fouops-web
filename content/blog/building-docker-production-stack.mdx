@@ -1,0 +1,70 @@
+---
+title: "Building a Docker Production Stack"
+description: "How I structured a Docker Compose setup for production workloads — SSL, reverse proxy, health checks and more."
+date: "2026-05-10"
+category: "Build Logs"
+---
+
+Setting up Docker Compose for production is one of those tasks that looks simple until you try it for the first time. I've done this across multiple projects now and the patterns have solidified into something I can repeat.
+
+## The Core Problem
+
+Most tutorials show you how to run a container. Very few show you how to run it reliably in production — with SSL, automatic restarts, monitoring, and backup strategies.
+
+## The Stack
+
+Here's the final structure I settled on:
+
+```yaml
+services:
+  traefik:
+    image: traefik:v3.0
+    command:
+      - "--api.insecure=false"
+      - "--providers.docker=true"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.letsencrypt.acme.email=${ACME_EMAIL}"
+    ports:
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./letsencrypt:/letsencrypt
+
+  app:
+    image: myapp:latest
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.app.rule=Host(`app.example.com`)"
+      - "traefik.http.routers.app.tls.certresolver=letsencrypt"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3010/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+```
+
+## Key Decisions
+
+### Traefik as the Reverse Proxy
+
+Traefik automatically detects containers via Docker labels and provisions SSL certificates from Let's Encrypt. Zero manual Nginx config.
+
+### Health Checks
+
+Every service has a health check. If a container becomes unhealthy, Docker will restart it. Combined with `restart: unless-stopped`, your app stays up even after crashes.
+
+### Environment Management
+
+All secrets live in `.env` files never committed to version control. Use `.env.example` for documentation.
+
+```bash
+# .env
+DATABASE_URL=postgresql://user:pass@postgres:5432/myapp
+SECRET_KEY=change-this-in-production
+ACME_EMAIL=you@example.com
+```
+
+## What's Next
+
+The next piece is backups — automated Postgres dumps to S3 with retention policies. That's covered in the next post.
