@@ -5,6 +5,8 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { locales, defaultLocale, type Locale } from "@/lib/i18n";
 import { siteConfig } from "@/lib/site";
+import { Analytics } from "@vercel/analytics/next";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -91,6 +93,7 @@ export default async function LocaleLayout({
       >
         <Navbar locale={lang} />
         <main className="flex-1">{children}</main>
+        <Analytics />
         <Footer locale={lang} />
       </body>
     </html>
