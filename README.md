@@ -1,124 +1,89 @@
 # FouOpsLab Web
 
-English | [简体中文](./README-CN.md)
+The public website and docs for **FouOpsLab**, an open-source infrastructure project for founders and solo developers.
 
-The public marketing website for FouOpsLab, built with Next.js App Router, React 19, Tailwind CSS 4, and MDX.
+🌐 Live site: https://fouopslab.com  
+📦 Infrastructure repo: _coming soon_
 
-It ships a bilingual landing page, product detail pages, a blog powered by local MDX content, and two transactional flows backed by Resend:
+---
 
-- contact form email delivery
-- waitlist confirmation email delivery
+## What is FouOpsLab?
 
-## What is included
+FouOpsLab is a production-ready Docker Compose stack for running real workloads on a single VPS — without Kubernetes complexity.
 
-- Locale-aware routing for English and Simplified Chinese: `/en` and `/zh-CN`
-- Marketing homepage composed from reusable sections in `components/home`
-- Product pages backed by typed content in `lib/products.ts`
-- Blog index and post pages backed by MDX files in `content/blog`
-- Contact and waitlist API routes with simple in-memory cooldown protection
-- SEO metadata, `robots.txt`, and `sitemap.xml` generated from site configuration
-- Standalone Next.js output for container or VPS deployment
+It focuses on the boring but critical parts:
+- Traefik + Let’s Encrypt (SSL)
+- Container health checks & restart policies
+- Monitoring (Prometheus / Grafana)
+- Automated backups (DB + volumes)
+- Deployment & downtime alerts (Telegram)
 
-## Tech stack
+The goal is simple:
+> Spend less time configuring infrastructure, more time shipping products.
 
+---
+
+## Open Core Philosophy
+
+The **core stack will always be free and open-source (MIT)**.
+
+Early on, I explored whether this could support a paid business model.  
+That experiment is visible in the repository history — and I’m keeping it public on purpose.
+
+Today, the direction is clear:
+
+- ✅ Core: Free, open, self-hostable forever
+- 🔒 Optional extras: Hardened configs, advanced dashboards, or convenience tooling  
+  (never paywalled for survival)
+
+This project is built in public. Feedback shapes it more than roadmaps do.
+
+---
+
+## About this repo
+
+This repository contains **only the marketing site and documentation**.
+
+| Path | Purpose |
+|---|---|
+| `app/` | Next.js App Router pages |
+| `components/` | UI and layout |
+| `content/blog/` | MDX blog posts |
+| `lib/` | Product data, i18n, blog loaders |
+| `dictionaries/` | EN / ZH translations |
+
+Tech stack:
 - Next.js 16
 - React 19
-- TypeScript 5
-- Tailwind CSS 4
+- TypeScript
+- Tailwind CSS
 - MDX
-- Resend
+- Resend (email forms)
 
-## Project structure
+---
 
-```text
-app/                 App Router pages, API routes, metadata, locale layouts
-components/          UI, layout, contact form, and homepage sections
-content/blog/        MDX blog posts
-dictionaries/        Locale dictionaries for English and Simplified Chinese
-lib/                 Blog loaders, i18n helpers, product data, shared site config
-public/              Static assets
-types/               Shared TypeScript types
-```
+## Status
 
-## Getting started
+- ✅ Website: live
+- 🚧 Infrastructure repo: in progress
+- 🧠 Feedback stage: active
 
-### Prerequisites
+If you run side projects or production services on a single VPS, I’d love to hear:
+- What configs do you rewrite every time?
+- What would make a “base stack” actually useful to you?
 
-- Node.js 20+
-- pnpm
+---
 
-### Install dependencies
+## Contributing
 
-```bash
-pnpm install
-```
+This repo is currently focused on content and wording improvements.  
+Infrastructure contributions will open once the main stack is published.
 
-### Configure environment variables
+Feedback, issues, and discussions are very welcome.
 
-Copy the example file and fill in your own values:
+---
 
-```bash
-cp .env.example .env
-```
 
-Required variables:
+## License
 
-| Variable | Required | Purpose |
-| --- | --- | --- |
-| `NEXT_PUBLIC_SITE_NAME` | yes | Brand name used in metadata and email copy |
-| `NEXT_PUBLIC_SITE_URL` | yes | Canonical site URL used by metadata, sitemap, and robots |
-| `CONTACT_EMAIL` | yes | Inbox shown on the contact page and used for contact form delivery |
-| `CONTACT_EMAIL_FROM` | yes | Sender identity for contact form emails |
-| `WAITLIST_EMAIL_FROM` | yes | Sender identity for waitlist confirmation emails |
-| `WAITLIST_REPLY_TO` | yes | Reply-to address for waitlist emails |
-| `RESEND_API_KEY` | yes | API key for the Resend integration |
-
-If `RESEND_API_KEY` is missing, both `/api/contact` and `/api/waitlist` return a configuration error.
-
-### Run the development server
-
-```bash
-pnpm dev
-```
-
-The app runs on [http://localhost:3000](http://localhost:3000).
-
-## Available scripts
-
-```bash
-pnpm dev
-pnpm build
-pnpm start
-pnpm lint
-```
-
-## Content workflow
-
-### Blog posts
-
-Add new posts under `content/blog/*.mdx` with frontmatter compatible with `types/blog.ts`.
-
-### Product content
-
-Update product detail content in `lib/products.ts`.
-
-### Translations
-
-Update UI copy in:
-
-- `dictionaries/en.json`
-- `dictionaries/zh-CN.json`
-
-## Email flows
-
-### Contact form
-
-- client form: `components/contact/ContactForm.tsx`
-- API route: `app/api/contact/route.ts`
-- behavior: validates input, enforces a 60-second cooldown per email, then forwards the message through Resend
-
-### Waitlist form
-
-- client form: `components/home/WaitlistSection.tsx`
-- API route: `app/api/waitlist/route.ts`
-- behavior: validates input, enforces a 60-second cooldown per email, then sends a confirmation email through Resend
+MIT
