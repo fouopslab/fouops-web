@@ -1,125 +1,89 @@
 # FouOpsLab Web
 
-[English](./README.md) | 简体中文
+FouOpsLab 的公共官網與文檔站。  
+FouOpsLab 本身是一個面向創始人與獨立開發者的開源基礎設施項目。
 
-FouOpsLab 的官网项目，基于 Next.js App Router、React 19、Tailwind CSS 4 和 MDX 构建。
+🌐 官網：https://fouopslab.com  
+📦 基礎設施倉庫：籌備中（即將發布）
 
-当前仓库包含一个双语营销官网，以及两个由 Resend 驱动的交互流程：
+---
 
-- 联系表单邮件发送
-- 候补名单确认邮件发送
+## FouOpsLab 是什麼？
 
-## 项目内容
+FouOpsLab 是一套**生產級的 Docker Compose 堆棧**，旨在幫助你在單台 VPS 上穩定運行真實業務，而無需引入 Kubernetes 的複雜度。
 
-- 英文与简体中文的多语言路由：`/en` 和 `/zh-CN`
-- 由 `components/home` 组合而成的营销首页
-- 基于 `lib/products.ts` 的产品详情页
-- 基于 `content/blog` 本地 MDX 文件的博客系统
-- 带有简单内存冷却限制的 contact / waitlist API
-- 基于站点配置生成的 SEO metadata、`robots.txt` 和 `sitemap.xml`
-- 适合容器或 VPS 部署的 Next.js standalone 输出
+它專注於解決那些「枯燥但致命」的運維問題：
 
-## 技术栈
+- Traefik + Let’s Encrypt（自動 SSL）
+- 容器健康檢查與自動重啟
+- 監控系統（Prometheus / Grafana）
+- 自動化備份（數據庫 + 存儲卷）
+- 部署與宕機告警（Telegram）
 
+核心理念很簡單：
+> 少花時間在基礎設施上折騰，多花時間在產品本身。
+
+---
+
+## 開源核心（Open Core）理念
+
+**核心堆棧將永久免費且開源（MIT 協議）。**
+
+早期我曾探索過付費模式的可能性，相關頁面仍保留在 Git 歷史中——這是刻意的，不作隱瞞。
+
+經過與社區的交流，方向已經明確：
+
+- ✅ **核心功能**：永久免費、開源、可自行託管
+- 🔒 **可選增值項**：加固配置、高級儀表盤或便利性工具  
+  （絕不對生存必需功能進行收費）
+
+這是一個 Build in Public（公開構建）的項目，你的反饋比我的路線圖更重要。
+
+---
+
+## 關於本倉庫
+
+⚠️ **注意**：本倉庫僅包含官網與文檔，**不包含基礎設施代碼**。
+
+| 路徑 | 用途 |
+|---|---|
+| `app/` | Next.js App Router 頁面 |
+| `components/` | UI 組件與佈局 |
+| `content/blog/` | MDX 博客文章 |
+| `lib/` | 產品數據、國際化邏輯、博客加載器 |
+| `dictionaries/` | 中英翻譯詞典 |
+
+技術棧：
 - Next.js 16
 - React 19
-- TypeScript 5
-- Tailwind CSS 4
+- TypeScript
+- Tailwind CSS
 - MDX
-- Resend
+- Resend（郵件表單）
 
-## 目录结构
+---
 
-```text
-app/                 App Router 页面、API 路由、metadata、语言布局
-components/          UI 组件、布局组件、联系表单、首页模块
-content/blog/        MDX 博客文章
-dictionaries/        英文与简体中文文案字典
-lib/                 博客读取、i18n、产品数据、站点配置
-public/              静态资源
-types/               共享 TypeScript 类型
-```
+## 當前狀態
 
-## 本地运行
+- ✅ 官網：已上線
+- 🚧 基礎設施倉庫：開發中
+- 🧠 反饋階段：進行中
 
-### 前置要求
+如果你也在 VPS 上運行 Side Project 或正式服務，我非常想聽聽你的看法：
+- 有哪些配置是你每次新伺服器都要重新寫一遍的？
+- 一個「標準化基礎堆棧」對你來說真正的價值是什麼？
 
-- Node.js 20+
-- pnpm
+---
 
-### 安装依赖
+## 貢獻
 
-```bash
-pnpm install
-```
+目前本倉庫主要接受內容與文案上的改進。  
+待核心基礎設施倉庫發布後，將正式開放代碼貢獻。
 
-### 配置环境变量
+歡迎提交 Issue 與討論。
 
-复制示例文件后再填写你自己的配置：
+---
 
-```bash
-cp .env.example .env
-```
+## 許可證
 
-必要变量如下：
-
-| 变量名 | 是否必填 | 作用 |
-| --- | --- | --- |
-| `NEXT_PUBLIC_SITE_NAME` | 是 | 站点名称，用于 metadata 和邮件文案 |
-| `NEXT_PUBLIC_SITE_URL` | 是 | 站点 canonical URL，用于 metadata、sitemap 和 robots |
-| `CONTACT_EMAIL` | 是 | 联系页展示的邮箱，同时作为联系表单收件邮箱 |
-| `CONTACT_EMAIL_FROM` | 是 | 联系表单邮件的发件人身份 |
-| `WAITLIST_EMAIL_FROM` | 是 | 候补名单确认邮件的发件人身份 |
-| `WAITLIST_REPLY_TO` | 是 | 候补名单邮件的 reply-to 地址 |
-| `RESEND_API_KEY` | 是 | Resend 集成所需 API Key |
-
-如果没有配置 `RESEND_API_KEY`，`/api/contact` 和 `/api/waitlist` 都会返回服务未配置错误。
-
-### 启动开发服务器
-
-```bash
-pnpm dev
-```
-
-默认访问地址是 [http://localhost:3000](http://localhost:3000)。
-
-## 可用脚本
-
-```bash
-pnpm dev
-pnpm build
-pnpm start
-pnpm lint
-```
-
-## 内容维护
-
-### 博客
-
-在 `content/blog/*.mdx` 下新增文章，frontmatter 结构需要与 `types/blog.ts` 保持一致。
-
-### 产品内容
-
-产品详情内容维护在 `lib/products.ts`。
-
-### 多语言文案
-
-界面文案维护在：
-
-- `dictionaries/en.json`
-- `dictionaries/zh-CN.json`
-
-## 邮件流程
-
-### 联系表单
-
-- 前端表单：`components/contact/ContactForm.tsx`
-- API 路由：`app/api/contact/route.ts`
-- 行为：校验输入，对同一邮箱做 60 秒冷却限制，然后通过 Resend 转发到联系邮箱
-
-### 候补名单
-
-- 前端表单：`components/home/WaitlistSection.tsx`
-- API 路由：`app/api/waitlist/route.ts`
-- 行为：校验输入，对同一邮箱做 60 秒冷却限制，然后通过 Resend 发送确认邮件
-
+MIT
